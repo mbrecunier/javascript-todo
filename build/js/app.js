@@ -116,6 +116,16 @@ var ToDoList;
         }
         return descriptions;
     };
+    ToDoList.listPriority = function (priority, taskCollection) {
+        var descriptions = [];
+        for (var _i = 0, taskCollection_5 = taskCollection; _i < taskCollection_5.length; _i++) {
+            var task = taskCollection_5[_i];
+            if (task.priority === priority) {
+                descriptions.push(task.description);
+            }
+        }
+        return descriptions;
+    };
 })(ToDoList || (ToDoList = {}));
 /// <reference path="to-do-classes-interfaces.ts" />
 ///<reference path="to-do-people.ts" />
@@ -160,5 +170,23 @@ var getWorkTasks = ToDoList.describeWorkTasks(tasks);
 console.log("Here are Work Tasks: ");
 for (var _c = 0, getWorkTasks_1 = getWorkTasks; _c < getWorkTasks_1.length; _c++) {
     var task = getWorkTasks_1[_c];
+    console.log(task);
+}
+var highTasks = ToDoList.listPriority("High", tasks);
+console.log("Here are High Priority Tasks: ");
+for (var _d = 0, highTasks_1 = highTasks; _d < highTasks_1.length; _d++) {
+    var task = highTasks_1[_d];
+    console.log(task);
+}
+var lowTasks = ToDoList.listPriority("Low", tasks);
+console.log("Here are Low Priority Tasks: ");
+for (var _e = 0, lowTasks_1 = lowTasks; _e < lowTasks_1.length; _e++) {
+    var task = lowTasks_1[_e];
+    console.log(task);
+}
+var mediumTasks = ToDoList.listPriority("Medium", tasks);
+console.log("Here are Medium Priority Tasks: ");
+for (var _f = 0, mediumTasks_1 = mediumTasks; _f < mediumTasks_1.length; _f++) {
+    var task = mediumTasks_1[_f];
     console.log(task);
 }

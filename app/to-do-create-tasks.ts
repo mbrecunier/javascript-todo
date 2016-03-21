@@ -46,3 +46,18 @@ console.log("Here are Work Tasks: ");
 for(var task of getWorkTasks) {
   console.log(task);
 }
+var highTasks = ToDoList.listPriority("High", tasks);
+console.log("Here are High Priority Tasks: ");
+for(var task of highTasks) {
+  console.log(task);
+}
+var lowTasks = ToDoList.listPriority("Low", tasks);
+console.log("Here are Low Priority Tasks: ");
+for(var task of lowTasks) {
+  console.log(task);
+}
+var mediumTasks = ToDoList.listPriority("Medium", tasks);
+console.log("Here are Medium Priority Tasks: ");
+for(var task of mediumTasks) {
+  console.log(task);
+}
