@@ -31,3 +31,18 @@ console.log("Here are Thor's tasks: ");
 for(var task of thorTasks){
   console.log(task);
 }
+var getHobbyTasks = ToDoList.describeHobbyTasks(tasks);
+console.log("Here are Hobby Tasks: ");
+for(var task of getHobbyTasks) {
+  console.log(task);
+}
+var getHomeTasks = ToDoList.describeHomeTasks(tasks);
+console.log("Here are Home Tasks: ");
+for(var task of getHomeTasks) {
+  console.log(task);
+}
+var getWorkTasks = ToDoList.describeWorkTasks(tasks);
+console.log("Here are Work Tasks: ");
+for(var task of getWorkTasks) {
+  console.log(task);
+}

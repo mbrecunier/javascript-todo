@@ -86,6 +86,36 @@ var ToDoList;
         }
         return descriptions;
     };
+    ToDoList.describeHobbyTasks = function (taskCollection) {
+        var descriptions = [];
+        for (var _i = 0, taskCollection_2 = taskCollection; _i < taskCollection_2.length; _i++) {
+            var task = taskCollection_2[_i];
+            if (task.constructor === ToDoList.HobbyTask) {
+                descriptions.push(task.description);
+            }
+        }
+        return descriptions;
+    };
+    ToDoList.describeWorkTasks = function (taskCollection) {
+        var descriptions = [];
+        for (var _i = 0, taskCollection_3 = taskCollection; _i < taskCollection_3.length; _i++) {
+            var task = taskCollection_3[_i];
+            if (task.constructor === ToDoList.WorkTask) {
+                descriptions.push(task.description);
+            }
+        }
+        return descriptions;
+    };
+    ToDoList.describeHomeTasks = function (taskCollection) {
+        var descriptions = [];
+        for (var _i = 0, taskCollection_4 = taskCollection; _i < taskCollection_4.length; _i++) {
+            var task = taskCollection_4[_i];
+            if (task.constructor === ToDoList.HomeTask) {
+                descriptions.push(task.description);
+            }
+        }
+        return descriptions;
+    };
 })(ToDoList || (ToDoList = {}));
 /// <reference path="to-do-classes-interfaces.ts" />
 ///<reference path="to-do-people.ts" />
@@ -112,5 +142,23 @@ var thorTasks = ToDoList.describeTasksForPerson(people.thor, tasks);
 console.log("Here are Thor's tasks: ");
 for (var _i = 0, thorTasks_1 = thorTasks; _i < thorTasks_1.length; _i++) {
     var task = thorTasks_1[_i];
+    console.log(task);
+}
+var getHobbyTasks = ToDoList.describeHobbyTasks(tasks);
+console.log("Here are Hobby Tasks: ");
+for (var _a = 0, getHobbyTasks_1 = getHobbyTasks; _a < getHobbyTasks_1.length; _a++) {
+    var task = getHobbyTasks_1[_a];
+    console.log(task);
+}
+var getHomeTasks = ToDoList.describeHomeTasks(tasks);
+console.log("Here are Home Tasks: ");
+for (var _b = 0, getHomeTasks_1 = getHomeTasks; _b < getHomeTasks_1.length; _b++) {
+    var task = getHomeTasks_1[_b];
+    console.log(task);
+}
+var getWorkTasks = ToDoList.describeWorkTasks(tasks);
+console.log("Here are Work Tasks: ");
+for (var _c = 0, getWorkTasks_1 = getWorkTasks; _c < getWorkTasks_1.length; _c++) {
+    var task = getWorkTasks_1[_c];
     console.log(task);
 }
