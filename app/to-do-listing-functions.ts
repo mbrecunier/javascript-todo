@@ -40,7 +40,7 @@ module ToDoList {
     return descriptions;
   }
 
-  export var listPriority = function(priority: String ,taskCollection: Task[]): String[] {
+  export var listPriority = function(priority: String, taskCollection: Task[]): String[] {
     var descriptions: String[] = [];
     for(var task of taskCollection) {
       if(task.priority === priority) {

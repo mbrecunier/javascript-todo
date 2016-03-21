@@ -127,16 +127,16 @@ var ToDoList;
         return descriptions;
     };
 })(ToDoList || (ToDoList = {}));
-/// <reference path="to-do-classes-interfaces.ts" />
+///<reference path="to-do-classes-interfaces.ts" />
 ///<reference path="to-do-people.ts" />
 ///<reference path="to-do-listing-functions.ts" />
 var people = ToDoList.people;
 var tasks = [];
-tasks.push(new ToDoList.HomeTask("Do the dishes.", "High"));
+tasks.push(new ToDoList.HomeTask("Do the dishes.", "High", people.diane));
 tasks.push(new ToDoList.HomeTask("Buy chocolate.", "Low", people.diane));
-tasks.push(new ToDoList.HomeTask("Wash the laundry.", "High"));
-tasks.push(new ToDoList.HobbyTask("Practice origami."));
-tasks.push(new ToDoList.HobbyTask("Bake a pie."));
+tasks.push(new ToDoList.HomeTask("Wash the laundry.", "High", people.loki));
+tasks.push(new ToDoList.HobbyTask("Practice origami.", people.loki));
+tasks.push(new ToDoList.HobbyTask("Bake a pie.", people.thor));
 var today = new Date();
 var tomorrow = new Date();
 tomorrow.setDate(today.getDate() + 1);
@@ -147,46 +147,53 @@ tasks.push(new ToDoList.WorkTask(tomorrow, "Go to meeting.", "Medium", people.th
 tasks.push(new ToDoList.WorkTask(tomorrow, "Save the world.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Buy a new shirt.", "Low", people.thor));
 tasks.push(new ToDoList.WorkTask(nextDay, "Clean ceiling.", "Low", people.loki));
-console.log(tasks);
-var thorTasks = ToDoList.describeTasksForPerson(people.thor, tasks);
-console.log("Here are Thor's tasks: ");
-for (var _i = 0, thorTasks_1 = thorTasks; _i < thorTasks_1.length; _i++) {
-    var task = thorTasks_1[_i];
-    console.log(task);
-}
-var getHobbyTasks = ToDoList.describeHobbyTasks(tasks);
-console.log("Here are Hobby Tasks: ");
-for (var _a = 0, getHobbyTasks_1 = getHobbyTasks; _a < getHobbyTasks_1.length; _a++) {
-    var task = getHobbyTasks_1[_a];
-    console.log(task);
-}
-var getHomeTasks = ToDoList.describeHomeTasks(tasks);
-console.log("Here are Home Tasks: ");
-for (var _b = 0, getHomeTasks_1 = getHomeTasks; _b < getHomeTasks_1.length; _b++) {
-    var task = getHomeTasks_1[_b];
-    console.log(task);
-}
-var getWorkTasks = ToDoList.describeWorkTasks(tasks);
-console.log("Here are Work Tasks: ");
-for (var _c = 0, getWorkTasks_1 = getWorkTasks; _c < getWorkTasks_1.length; _c++) {
-    var task = getWorkTasks_1[_c];
-    console.log(task);
-}
-var highTasks = ToDoList.listPriority("High", tasks);
-console.log("Here are High Priority Tasks: ");
-for (var _d = 0, highTasks_1 = highTasks; _d < highTasks_1.length; _d++) {
-    var task = highTasks_1[_d];
-    console.log(task);
-}
-var lowTasks = ToDoList.listPriority("Low", tasks);
-console.log("Here are Low Priority Tasks: ");
-for (var _e = 0, lowTasks_1 = lowTasks; _e < lowTasks_1.length; _e++) {
-    var task = lowTasks_1[_e];
-    console.log(task);
-}
-var mediumTasks = ToDoList.listPriority("Medium", tasks);
-console.log("Here are Medium Priority Tasks: ");
-for (var _f = 0, mediumTasks_1 = mediumTasks; _f < mediumTasks_1.length; _f++) {
-    var task = mediumTasks_1[_f];
-    console.log(task);
-}
+// console.log(tasks);
+// var thorTasks = ToDoList.describeTasksForPerson(people.thor, tasks);
+// console.log("Here are Thor's tasks: ");
+// for(var task of thorTasks){
+//   console.log(task);
+// }
+// var getHobbyTasks = ToDoList.describeHobbyTasks(tasks);
+// console.log("Here are Hobby Tasks: ");
+// for(var task of getHobbyTasks) {
+//   console.log(task);
+// }
+// var getHomeTasks = ToDoList.describeHomeTasks(tasks);
+// console.log("Here are Home Tasks: ");
+// for(var task of getHomeTasks) {
+//   console.log(task);
+// }
+// var getWorkTasks = ToDoList.describeWorkTasks(tasks);
+// console.log("Here are Work Tasks: ");
+// for(var task of getWorkTasks) {
+//   console.log(task);
+// }
+// var highTasks = ToDoList.listPriority("High", tasks);
+// console.log("Here are High Priority Tasks: ");
+// for(var task of highTasks) {
+//   console.log(task);
+// }
+// var lowTasks = ToDoList.listPriority("Low", tasks);
+// console.log("Here are Low Priority Tasks: ");
+// for(var task of lowTasks) {
+//   console.log(task);
+// }
+// var mediumTasks = ToDoList.listPriority("Medium", tasks);
+// console.log("Here are Medium Priority Tasks: ");
+// for(var task of mediumTasks) {
+//   console.log(task);
+// }
+// UI
+$(document).ready(function () {
+    //for each person in people, append an option with a value of person's name
+    $("#search-users").submit(function (event) {
+        event.preventDefault();
+        var user = $("select#users").val();
+        console.log(tasks);
+        tasks.forEach(function (i) {
+            if (i.assignedTo.name === user) {
+                $(".display").append("<p>" + i.description + "</p>");
+            }
+        });
+    });
+});
