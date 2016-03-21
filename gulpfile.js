@@ -24,6 +24,12 @@ gulp.task('jsBower', function () {
     .pipe(gulp.dest('./build/js'));
 });
 
+gulp.task('cssBower', function() {
+  return gulp.src(lib.ext('css').files)
+    .pipe(concat('vendor.min.js'))
+    .pipe(gulp.dest('./build/css'));
+})
+
 gulp.task('bower', ['jsBower', 'cssBower']);
 
 gulp.task('build', ['bower', 'cssBuild']);
